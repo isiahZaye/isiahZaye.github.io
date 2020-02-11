@@ -68,7 +68,9 @@ function playerPressedEven(){
 
 }
 
-
+let showChoice = () =>{
+  document.getElementById('choice').innerHTML = player1.choice
+}
 
 
 
@@ -87,7 +89,7 @@ function score (bot) {
   else {
     answer = "odd";
   }
-
+  console.log(answer)
   return answer;
 };
 
@@ -114,20 +116,25 @@ function pointSystem() {
 
   playerPressedOdd();
 
-  console.log(`"player1 choice is: ${player1.choice} and computerAnswer is: ${computerAnswer}"`);
+  document.getElementById('p1choice').innerText =`player1 choice is: ` + player1.choice ;
+document.getElementById('p2choice').innerText =`player2 choice is: ` + computerAnswer;
 
-  if ( player1.choice === computerAnswer ) {
-    console.log("player got the right answer: ") ;
-    p1.push('pt')
-  }
-  else{
-    console.log('player1 got the incorrect answer')
-  }
+if ( player1.choice === computerAnswer ) {
+document.getElementById('result').innerText ="player with the most points won " ;
+  p1.push('pt')
+}
+
+
+
+else{
+document.getElementById('result').innerText =('player1 got the incorrect answer')
+  p2.push('pt');
+}
 
   player1Turn = false;
 
-  console.log("p1 array is: " + p1) ;
-  console.log("p2 array is: " + p2) ;
+    document.getElementById('p1points').innerText ="p1 : " + p1 ;
+    document.getElementById('p2points').innerText ="p2 : " + p2 ;
 
 
 }
@@ -135,11 +142,15 @@ console.log(rounds);
 
   $( "#od" ).click(function() {
   ///alert( "square1" );
+  playerPressedOdd();
+  showChoice();
+
     console.log("player pressed odd button");
   });
 
   $( "#ev" ).click(function() {
+    showChoice();
     ///alert( "square1" );
       console.log("player pressed even button");
     });
-// console.log(p1);
+// // console.log(p1);
